@@ -21,7 +21,7 @@
         <option name="ALLOW_USER_CONFIGURATION" value="false" />
         <option name="MANIFEST_FILE_RELATIVE_PATH" value="/src/main/AndroidManifest.xml" />
         <option name="RES_FOLDER_RELATIVE_PATH" value="/src/main/res" />
-        <option name="RES_FOLDERS_RELATIVE_PATH" value="file://$MODULE_DIR$/src/main/res" />
+        <option name="RES_FOLDERS_RELATIVE_PATH" value="file://$MODULE_DIR$/src/main/res;file://$MODULE_DIR$/src/debug/res" />
         <option name="ASSETS_FOLDER_RELATIVE_PATH" value="/src/main/assets" />
       </configuration>
     </facet>
@@ -134,12 +134,12 @@
     <orderEntry type="library" exported="" name="smack-resolver-minidns-4.1.0-alpha6" level="project" />
     <orderEntry type="library" exported="" name="play-services-appstate-7.0.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-drive-7.0.0" level="project" />
-    <orderEntry type="library" exported="" name="play-services-games-7.0.0" level="project" />
     <orderEntry type="library" exported="" name="smack-android-4.1.0-alpha6" level="project" />
     <orderEntry type="library" exported="" name="play-services-analytics-7.0.0" level="project" />
+    <orderEntry type="library" exported="" name="play-services-games-7.0.0" level="project" />
     <orderEntry type="library" exported="" name="smack-tcp-4.1.0-alpha6" level="project" />
-    <orderEntry type="library" exported="" name="smack-android-extensions-4.1.0-alpha6" level="project" />
     <orderEntry type="library" exported="" name="smack-sasl-provided-4.1.0-alpha6" level="project" />
+    <orderEntry type="library" exported="" name="smack-android-extensions-4.1.0-alpha6" level="project" />
     <orderEntry type="library" exported="" name="play-services-nearby-7.0.0" level="project" />
     <orderEntry type="library" exported="" name="smack-core-4.1.0-alpha6" level="project" />
     <orderEntry type="library" exported="" name="jxmpp-core-0.4.0" level="project" />
