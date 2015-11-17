@@ -25,6 +25,7 @@ import org.jivesoftware.smack.sasl.SASLMechanism;
 import org.jivesoftware.smack.sasl.provided.SASLDigestMD5Mechanism;
 import org.jivesoftware.smack.tcp.XMPPTCPConnection;
 import org.jivesoftware.smack.tcp.XMPPTCPConnectionConfiguration;
+import org.jivesoftware.smackx.iqregister.AccountManager;
 import org.jivesoftware.smackx.ping.PingFailedListener;
 import org.jivesoftware.smackx.ping.PingManager;
 
@@ -35,7 +36,8 @@ import java.util.Collection;
 /**
  * Created by feliche on 05/10/15.
  */
-public class XmppConnection implements ConnectionListener, ChatManagerListener, RosterListener, ChatMessageListener,PingFailedListener {
+public class XmppConnection implements ConnectionListener, ChatManagerListener, RosterListener,
+        ChatMessageListener,PingFailedListener {
 
     private final Context mApplicationContext;
     private final String mPassword;
@@ -46,7 +48,6 @@ public class XmppConnection implements ConnectionListener, ChatManagerListener, 
     private XMPPTCPConnection mConnection;
     private ArrayList<String> mRoster;
     private BroadcastReceiver mReceiver;
-
 
     //ConnectionListener
     @Override
@@ -195,6 +196,37 @@ public class XmppConnection implements ConnectionListener, ChatManagerListener, 
 
         ChatManager.getInstanceFor(mConnection).addChatListener(this);
         mConnection.getRoster().addRosterListener(this);
+
+    }
+
+    // Agregar usuario
+    public void addUser() throws IOException, XMPPException, SmackException{
+        XMPPTCPConnectionConfiguration.XMPPTCPConnectionConfigurationBuilder builder
+                = XMPPTCPConnectionConfiguration.builder();
+
+        builder.setSecurityMode(ConnectionConfiguration.SecurityMode.disabled);
+        SASLMechanism mechanism = new SASLDigestMD5Mechanism();
+        SASLAuthentication.registerSASLMechanism(mechanism);
+        SASLAuthentication.blacklistSASLMechanism("SCRAM-SHA-1");
+        SASLAuthentication.blacklistSASLMechanism("DIGEST-MD5");
+
+        // configuración de la conexión XMPP
+        builder.setServiceName(mServiceName);
+        builder.setResource("Test XMPP Client");
+        //builder.setUsernameAndPassword(mUserName, mPassword);
+        //builder.setRosterLoadedAtLogin(true);
+
+        // crea la conexión
+        mConnection = new XMPPTCPConnection(builder.build());
+
+        // Configura el listener
+        mConnection.addConnectionListener(this);
+
+        // se conecta al servidor
+        mConnection.connect();
+        AccountManager accountManager;
+        accountManager = AccountManager.getInstance(mConnection);
+        accountManager.createAccount(mUserName,mPassword);
     }
 
     private void setUpSendMessageReceiver(){

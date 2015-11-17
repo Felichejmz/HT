@@ -71,6 +71,8 @@ public class MainActivity extends Activity {
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1)));
         // Espera servicios
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
+        // Agrega un usuario
+        navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1)));
 
         // Recycle the typed array
         navMenuIcons.recycle();
@@ -178,6 +180,9 @@ public class MainActivity extends Activity {
                 break;
             case 4:
                 fragment = new WaitService();
+                break;
+            case 5:
+                fragment = new AddUser();
                 break;
 
             default:

@@ -14,6 +14,7 @@
         <item >Actividades</item>
         <item >Estado</item>
         <item >Servicios</item>
+        <item >Nuevo Usuario</item>
     </string-array>
 
     <!-- Iconos de los items -->
@@ -23,6 +24,7 @@
         <item>@drawable/ic_photos</item>
         <item>@drawable/ic_communities</item>
         <item>@drawable/ic_whats_hot</item>
+        <item>@drawable/ic_communities</item>
     </array>
 
     <!-- Content Description -->
